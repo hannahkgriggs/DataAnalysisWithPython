@@ -4,10 +4,10 @@ import seaborn as sns
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
-# 1. Import data and set index to date column
+#import data and set index to date column
 df = pd.read_csv('fcc-forum-pageviews.csv', parse_dates=['date'], index_col='date')
 
-# 2. Clean data by filtering out top 2.5% and bottom 2.5% of page views
+#clean data by filtering out top 2.5% and bottom 2.5% of page views
 df = df[
     (df['value'] >= df['value'].quantile(0.025)) &
     (df['value'] <= df['value'].quantile(0.975))
@@ -57,7 +57,7 @@ def draw_bar_plot():
     return fig
 
 def draw_box_plot():
-    # Prepare data for box plots (this part is provided in boilerplate)
+    # Prepare data for box plots
     df_box = df.copy()
     df_box.reset_index(inplace=True)
     df_box['year'] = [d.year for d in df_box.date]
@@ -66,7 +66,7 @@ def draw_box_plot():
     # Ensure month order starts at Jan
     month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-    # Draw box plots (using Seaborn)
+    # Draw box plots 
     fig, axes = plt.subplots(1, 2, figsize=(20, 6))
 
     # Year-wise Box Plot (Trend)
@@ -81,6 +81,6 @@ def draw_box_plot():
     axes[1].set_xlabel('Month')
     axes[1].set_ylabel('Page Views')
 
-    # Save image and return fig (don't change this part)
+    # Save image and return fig
     fig.savefig('box_plot.png')
     return fig
