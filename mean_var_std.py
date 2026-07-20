@@ -1,14 +1,14 @@
 import numpy as np
 
 def calculate(list_of_nine):
-    # Validate input length
+    #validate input length
     if len(list_of_nine) != 9:
         raise ValueError("List must contain nine numbers.")
 
-    # Convert list to a 3x3 NumPy array
+    #convert list to a 3x3 NumPy array
     matrix = np.array(list_of_nine).reshape(3, 3)
 
-    # Compute calculations along axis 0 (columns), axis 1 (rows), and flattened matrix
+    #compute calculations along axis 0 (columns), axis 1 (rows), and flattened matrix
     calculations = {
         'mean': [
             matrix.mean(axis=0).tolist(),
